@@ -37,7 +37,7 @@ function Homepage() {
   }
   useEffect(() => {
     getdata()
-  },[])
+  })
   const deleteItem=async(item)=>{
     console.log(item)
     const token = localStorage.getItem("clone")
