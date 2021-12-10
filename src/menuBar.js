@@ -12,12 +12,12 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { Link, useHistory } from "react-router-dom"
-
+import PostAddIcon from '@mui/icons-material/PostAdd';
 import jwt from "jsonwebtoken"
 import HomeIcon from '@mui/icons-material/Home';
 
 import LoginIcon from '@mui/icons-material/Login';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+
 
 function Menubar() {
 
@@ -92,9 +92,9 @@ function Menubar() {
 
                 <ListItem button component={Link} to="/add ">
                     <ListItemIcon>
-                        <ShoppingBagIcon />
+                        <PostAddIcon />
                     </ListItemIcon>
-                    <ListItemText primary={"Add "} />
+                    <ListItemText primary={"Add"} />
                 </ListItem>
 
 
