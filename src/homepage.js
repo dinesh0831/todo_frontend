@@ -22,7 +22,7 @@ function Homepage() {
         const { data } = await axios.get(`${Url.backendUrl}/post`, {
           headers: { clone: token }
         })
-        console.log(data)
+        
         setData(data)
       }
       else {
