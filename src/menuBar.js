@@ -90,7 +90,7 @@ function Menubar() {
                     <ListItemText primary={"Home"} />
                 </ListItem>
 
-                <ListItem button component={Link} to="/add ">
+                <ListItem button component={Link} to="/add">
                     <ListItemIcon>
                         <PostAddIcon />
                     </ListItemIcon>
