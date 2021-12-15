@@ -8,6 +8,7 @@ class Register extends React.Component{
     constructor(){
         super()
         this.state={
+            message:"",
             name:"",
             mobileno:"",
             email:"",
@@ -23,13 +24,16 @@ class Register extends React.Component{
     }
     RegisterUsers=async()=>{
        const {name,mobileno,email,password,houseNo_street,village,city,pin}=this.state
-       const response=await axios.post(`${Url.backendUrl}/users/register`,{
+       const {data}=await axios.post(`${Url.backendUrl}/users/register`,{
         name,mobileno,email,password,address:{
             houseNo_street,village,city,pin
         }
        })
-      this.props.history.push("/login")
-        console.log(response)
+       this.setState({message:data.message})
+       if(data.message==="*successfully registered")
+       {
+         this.props.history.push("/login")
+       }
 
 
     }
@@ -56,21 +60,24 @@ class Register extends React.Component{
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Name" type="string" name="name" value={this.state.name}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="email" type="string" name="email" value={this.state.email}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Mobile No" type="string" name="mobileno" value={this.state.mobileno}  onChange={this.handleChange} ></TextField>
-                 <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="string" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
+                 <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Password" type="password" name="password" value={this.state.password}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="House No & Street" type="string" name="houseNo_street" value={this.state.houseNo_street}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="village/Town" type="string" name="village" value={this.state.village}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="City" type="string" name="city" value={this.state.city}  onChange={this.handleChange} ></TextField>
                  <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Pin" type="string" name="pin" value={this.state.pin}  onChange={this.handleChange} ></TextField>
+                 <Box sx={{display:"flex", justifyContent:"center",}}>
+                     <Typography sx={{color:"red"}}>{this.state.message}</Typography>
+                 </Box>
                  <Box sx={{display:"flex", justifyContent:"center",right:10}}>
                  <button>submit</button>
                  </Box>
-                 <Box>If you  have account
-                 <Link style={{margin:5}} to="/login">click here</Link>to register
+                 <Box sx={{display:"flex", justifyContent:"center",right:10}}><Typography sx={{textAlign:"center"}}>If you  have account
+                 <Link style={{margin:5}} to="/login">click here</Link>to register</Typography>
                  </Box>
                  </Grid>
                  
             </form>
-            <img style={{height:600,width:"100%"}} alt="register" src={register}/> 
+            <img style={{height:650,width:"100%"}} alt="register" src={register}/> 
             </Grid>
              
             
