@@ -4,7 +4,7 @@ import { useState, useEffect,} from "react";
 import { useParams ,useHistory } from "react-router-dom";
 import jwt from "jsonwebtoken";
 import axios from "axios"
-import login from "./images/img1.jpg"
+import login from "./images/img3.jpg"
 import {Url} from "./backend"
 function Reset() {
     const[password,setpassword]=useState("")
@@ -31,7 +31,7 @@ const handleChange=({target:{name,value}})=>{
     }
     useEffect(() => {
         getData()
-    },)
+    }, [])
 let navigate=useHistory ()
     const handleSubmit=async(e)=>{
        e.preventDefault()

@@ -2,7 +2,7 @@ import {useState} from "react";
 import {TextField,Grid,Box,Typography} from "@mui/material"
 import axios from "axios"
 import {Url} from "./backend"
-import login from "./images/img1.jpg"
+import login from "./images/img4.jpg"
 
 function Forgot() {
     const[email,setMail]=useState("")
@@ -16,7 +16,7 @@ const handleChange=({target:{name,value}})=>{
 
    const handleSubmit=async(e)=>{
        e.preventDefault()
-       const data=await axios.post(`${Url.backendUrl}/users/forget_password`,{email})
+       const {data}=await axios.post(`${Url.backendUrl}/users/forget_password`,{email})
        setMessage(data.message)
 
    }
@@ -26,7 +26,7 @@ const handleChange=({target:{name,value}})=>{
                 <Grid sx={{ margin: "5%", position: "absolute", backgroundColor: "white", width: 300, borderRadius: 5, padding: 2, }} item>
                     <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>Forget password</Typography>
                     <TextField size="small" sx={{ margin: 2 }} variant="outlined" label="Email" type="string" name="email" value={email} onChange={handleChange} ></TextField>
-                    <Typography sx={{ fontSize: 24, fontWeight: "bold" }}>{message}</Typography>
+                    <Typography sx={{color:"red"}}>{message}</Typography>
                     
                     <Box sx={{ display: "flex", justifyContent: "center", }}>
 
@@ -36,7 +36,7 @@ const handleChange=({target:{name,value}})=>{
 
                 </Grid>
             </form>
-            <img style={{ height: 600, width: "100%" }} alt="login" src={login} />
+            <img style={{ height: 650, width: "100%" }} alt="login" src={login} />
         </Grid>
     )
 }
