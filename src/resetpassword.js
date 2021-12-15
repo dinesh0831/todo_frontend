@@ -31,7 +31,7 @@ const handleChange=({target:{name,value}})=>{
     }
     useEffect(() => {
         getData()
-    },[])
+    },)
 let navigate=useHistory ()
     const handleSubmit=async(e)=>{
        e.preventDefault()
