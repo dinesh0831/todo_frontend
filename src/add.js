@@ -13,6 +13,7 @@ function Add() {
     const [time, setTime] = React.useState("");
     const [date, setDate] = React.useState("");
     const [title, setTitle] = React.useState("");
+    const [message,setmessage]=React.useState("")
 
   const history=useHistory()
 
@@ -30,7 +31,7 @@ function Add() {
                 },{
                     headers:{ clone:token}
                 })
-                console.log(data)
+               setMessage("*your WorkList is updated")
             }
             else{
             history.push("/login")
@@ -81,6 +82,9 @@ function Add() {
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </LocalizationProvider>
+                </Box>
+                    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Typography sx={{ color:"green"}}>message</Typography>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     <Button onClick={handleSubmit} color="success" variant="contained">submit</Button>
