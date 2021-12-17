@@ -32,6 +32,9 @@ function Add() {
                     headers:{ clone:token}
                 })
                setMessage(data.message)
+                setTime("")
+                setDate("")
+                setTitle("")
             }
             else{
             history.push("/login")
