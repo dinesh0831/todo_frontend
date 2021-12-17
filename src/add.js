@@ -31,7 +31,7 @@ function Add() {
                 },{
                     headers:{ clone:token}
                 })
-               setMessage("*your WorkList is updated")
+               setMessage(data.message)
             }
             else{
             history.push("/login")
@@ -84,7 +84,7 @@ function Add() {
                     </LocalizationProvider>
                 </Box>
                     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <Typography sx={{ color:"green"}}>message</Typography>
+                    <Typography sx={{ color:"green"}}>{message}</Typography>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     <Button onClick={handleSubmit} color="success" variant="contained">submit</Button>
