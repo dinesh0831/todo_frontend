@@ -1,4 +1,4 @@
-import { Container, Box, TextField, Button } from "@mui/material"
+import { Container, Box, TextField, Button,Typography } from "@mui/material"
 import { DatePicker, TimePicker, LocalizationProvider,  } from "@mui/lab"
 import Menubar from "./menuBar";
 import React from "react"
@@ -13,7 +13,7 @@ function Add() {
     const [time, setTime] = React.useState("");
     const [date, setDate] = React.useState("");
     const [title, setTitle] = React.useState("");
-    const [message,setmessage]=React.useState("")
+    const [message,setMessage]=React.useState("")
 
   const history=useHistory()
 
