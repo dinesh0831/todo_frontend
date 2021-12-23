@@ -73,7 +73,7 @@ class Login extends React.Component{
 
             </form>
 </Grid>
-            <img style={{height:"auto",width:"100%"}} alt="login" src={login}/> 
+            <img style={{height:"100vh",width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundAttachment:"fixed",}} alt="login" src={login}/> 
             </Grid>
         )
     }
