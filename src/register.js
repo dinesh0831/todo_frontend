@@ -79,7 +79,7 @@ class Register extends React.Component{
                  
             </form>
 </Grid>
-            <img style={{height:"auto",width:"100%"}} alt="register" src={register}/> 
+            <img style={{height:"100vh",width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundAttachment:"fixed",}} alt="register" src={register}/> 
             </Grid>
              
             
