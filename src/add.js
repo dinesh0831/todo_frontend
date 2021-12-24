@@ -2,7 +2,7 @@ import { Container, Box, TextField, Button,Typography } from "@mui/material"
 import { DatePicker, TimePicker, LocalizationProvider,  } from "@mui/lab"
 import Menubar from "./menuBar";
 import React from "react"
-import frLocale from 'date-fns/locale/fr';
+
 import jwt from "jsonwebtoken"
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import axios from "axios";
@@ -24,7 +24,7 @@ function Add() {
             if (decoded.exp * 1000 >= Date.now()) {
                 console.log(decoded.user.email)
                 const { data } = await axios.post(`${Url.backendUrl}/post`, {
-                    date,
+                    date:date.toLocaleDateString(),
                     time: time.toLocaleTimeString(),
                     title,
                     email:decoded.user.email
@@ -57,7 +57,7 @@ function Add() {
                 <h1>Title of your ToDo:</h1><TextField sx={{ marginLeft: 15 }} id="standard-basic" label="Title" value={title} onChange={(e) => setTitle(e.target.value)} variant="outlined" />
                 <h1>Date:</h1>
                 <Box sx={{ marginLeft: 15 }}>
-                    <LocalizationProvider dateAdapter={AdapterDateFns} locale={frLocale}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Date"
                             value={date}
@@ -67,7 +67,7 @@ function Add() {
                             onChange={(newValue) => {
                                 console.log(typeof newValue)
 
-                                setDate(newValue.toLocaleDateString());
+                                setDate(newValue);
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -79,7 +79,7 @@ function Add() {
                         <TimePicker
                             value={time}
                             onChange={(newValue => {
-                                console.log(newValue.toLocaleTimeString())
+                                console.log(newValue)
                                 setTime(newValue)
                             })}
                             renderInput={(params) => <TextField {...params} />}
