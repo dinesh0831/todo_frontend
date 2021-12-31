@@ -1,6 +1,6 @@
 // import "./app.css"
 import { Box, Paper, TableContainer, TableBody, Table, TableHead, TableRow, TableCell, Container, Button } from "@material-ui/core";
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Menubar from "./menuBar"
@@ -15,7 +15,7 @@ function Homepage() {
 
 
   const history = useHistory()
-  const getdata = async () => {
+  const getdata =useCallback( async () => {
     const token = localStorage.getItem("clone")
     if (token) {
       const decoded = jwt.decode(token)
@@ -35,10 +35,10 @@ function Homepage() {
       history.push("/login")
     }
 
-  }
+  },[history])
   useEffect(() => {
     getdata()
-  }, [])
+  }, [getdata])
   const deleteItem=async(item)=>{
     console.log(item)
     const token = localStorage.getItem("clone")
@@ -72,7 +72,7 @@ function Homepage() {
   return (
     <Box >
       <Menubar />
-      <Box sx={{ margin: 10 }} component={Container} sx={{position:"absolute", margin :10}}>
+      <Box sx={{ margin: 10 ,position:"absolute", }} component={Container} >
         <TableContainer component={Paper}>
         <Table  aria-label="simple table">
             <TableHead >
