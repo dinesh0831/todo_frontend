@@ -70,11 +70,12 @@ function Homepage() {
 
 
   return (
-    <Box >
+    <Box  >
       <Menubar />
-      <Box sx={{ margin: 10 ,position:"absolute", }} component={Container} >
-        <TableContainer component={Paper}>
-        <Table  aria-label="simple table">
+      <Box sx={{display:"flex",justifyContent:"center"}}>
+      <Box sx={{  position:"absolute",margin:10}} component={Container}>
+        <TableContainer  component={Paper}>
+        <Table  aria-label="customized table">
             <TableHead >
               <TableRow sx={{bgcolor:"gainsboro"}}>
                 <TableCell sx={{fontWeight:"bold",fontSize:20}}>Title</TableCell>
@@ -105,8 +106,10 @@ function Homepage() {
             </TableBody>
           </Table>
         </TableContainer>
+        </Box>
+        <img style={{ height:"100vh",width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundAttachment:"fixed",}} alt="login" src={login}/>
       </Box>
-      <img style={{ height:"100vh",width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundAttachment:"fixed",}} alt="login" src={login}/> 
+      
     </Box>
 
   );
