@@ -8,6 +8,7 @@ import { Url } from "./backend"
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import { useHistory } from "react-router-dom"
+import login from "./images/img4.jpg"
 function Homepage() {
   const [response, setData] = useState([])
 
@@ -22,7 +23,7 @@ function Homepage() {
         const { data } = await axios.get(`${Url.backendUrl}/post`, {
           headers: { clone: token }
         })
-        
+        console.log(data)
         setData(data)
       }
       else {
@@ -37,7 +38,7 @@ function Homepage() {
   }
   useEffect(() => {
     getdata()
-  })
+  }, [])
   const deleteItem=async(item)=>{
     console.log(item)
     const token = localStorage.getItem("clone")
@@ -69,18 +70,18 @@ function Homepage() {
 
 
   return (
-    <Box component={Container}>
+    <Box >
       <Menubar />
-      <Box sx={{ margin: 10 }}>
+      <Box sx={{ margin: 10 }} component={Container} sx={{position:"absolute", margin :10}}>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table  aria-label="simple table">
             <TableHead >
-              <TableRow>
-                <TableCell >Title</TableCell>
-                <TableCell align="center">Date</TableCell>
-                <TableCell align="center">Time</TableCell>
+              <TableRow sx={{bgcolor:"gainsboro"}}>
+                <TableCell sx={{fontWeight:"bold",fontSize:20}}>Title</TableCell>
+                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Date</TableCell>
+                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Time</TableCell>
                 
-                <TableCell align="center">Delete</TableCell>
+                <TableCell align="center" sx={{fontWeight:"bold",fontSize:20}}>Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -105,6 +106,7 @@ function Homepage() {
           </Table>
         </TableContainer>
       </Box>
+      <img style={{ height:"100vh",width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundAttachment:"fixed",}} alt="login" src={login}/> 
     </Box>
 
   );
