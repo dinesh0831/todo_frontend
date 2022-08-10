@@ -54,7 +54,17 @@ function Add() {
             <Menubar />
 
             <Box component={Container} sx={{ margin: 5 }}>
-                <h1>Title of your ToDo:</h1><TextField sx={{ marginLeft: 15 }} id="standard-basic" label="Title" value={title} onChange={(e) => setTitle(e.target.value)} variant="outlined" />
+                <h1>Title of your ToDo:</h1>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}  >
+                        <TimePicker
+                            value={time}
+                            onChange={(newValue => {
+                                console.log(newValue)
+                                setTitle(newValue)
+                            })}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
                 <h1>Date:</h1>
                 <Box sx={{ marginLeft: 15 }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
