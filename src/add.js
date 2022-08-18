@@ -55,16 +55,7 @@ function Add() {
 
             <Box component={Container} sx={{ margin: 5 }}>
                 <h1>Title of your ToDo:</h1>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}  >
-                        <TimePicker
-                            value={time}
-                            onChange={(newValue => {
-                                console.log(newValue)
-                                setTitle(newValue)
-                            })}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
+                    <TextField onChange={(e)=>setTitle(e.target.value)}/>
                 <h1>Date:</h1>
                 <Box sx={{ marginLeft: 15 }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
